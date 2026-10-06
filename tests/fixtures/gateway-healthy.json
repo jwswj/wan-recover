@@ -1,0 +1,52 @@
+{
+  "sampled_at": 1700000000,
+  "enabled": true,
+  "groups": [
+    {
+      "interfaces": [
+        "eth8"
+      ],
+      "metric": 1,
+      "active": true,
+      "health": "good"
+    },
+    {
+      "interfaces": [
+        "eth9"
+      ],
+      "metric": 2,
+      "active": false,
+      "health": "good"
+    }
+  ],
+  "wans": [
+    {
+      "interface": "eth8",
+      "metric": 1,
+      "health": "good"
+    },
+    {
+      "interface": "eth9",
+      "metric": 2,
+      "health": "good"
+    }
+  ],
+  "links": [
+    {
+      "interface": "eth8",
+      "enabled": true,
+      "current_enabled": true,
+      "plugged": true,
+      "wan_status": "active",
+      "timestamp_ms": 1700000000000
+    },
+    {
+      "interface": "eth9",
+      "enabled": true,
+      "current_enabled": true,
+      "plugged": true,
+      "wan_status": "inactive",
+      "timestamp_ms": 1700000000000
+    }
+  ]
+}

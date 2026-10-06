@@ -1,0 +1,20 @@
+name: CI
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  rust:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install pinned Rust toolchain
+        run: rustup toolchain install 1.93.1 --profile minimal --component rustfmt --component clippy
+      - run: cargo +1.93.1 fmt --check
+      - run: cargo +1.93.1 test --locked
+      - run: cargo +1.93.1 clippy --all-targets --locked -- -D warnings
+      - name: Validate gateway helper syntax
+        run: python3 -m py_compile gateway/wan-health.py
+      - name: Build container
+        run: docker build -t wan-recover:test .

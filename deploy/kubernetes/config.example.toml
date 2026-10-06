@@ -1,0 +1,35 @@
+listen = "0.0.0.0:8080"
+data_dir = "/data"
+token_file = "/run/wan-recover/webhook-token"
+enabled = false
+
+# Optional sample webhook mapping; the gateway reader is authoritative when configured.
+[events]
+alarm_pointer = "/alarm/name"
+timestamp_pointer = "/timestamp"
+timestamp_milliseconds = false
+down_alarm = "Primary WAN offline"
+up_alarm = "Primary WAN restored"
+
+[policy]
+grace_seconds = 90
+off_seconds = 15
+cooldown_seconds = 1800
+stable_seconds = 300
+max_cycles_per_day = 3
+max_event_age_seconds = 120
+
+# Replace addresses and interface names with your verified local configuration.
+# [gateway]
+# address = "10.0.0.1"
+# key_file = "/run/wan-recover/gateway-key"
+# known_hosts_file = "/run/wan-recover/known_hosts"
+# primary_interface = "eth8"
+# backup_interface = "eth9"
+
+# Only target an outlet powering the modem/NTD, never the gateway, AP or cluster.
+# [meross]
+# address = "10.0.0.50"
+# uuid = "00000000000000000000000000000000" # replace with verified device UUID
+# key_file = "/run/wan-recover/meross-key"
+# channel = 0

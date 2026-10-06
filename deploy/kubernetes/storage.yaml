@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: wan-recover-data
+spec:
+  accessModes: [ReadWriteOnce]
+  resources:
+    requests:
+      storage: 64Mi
+# Uses your cluster's default StorageClass. Choose durable storage and a retention
+# policy appropriate for the recovery journal; do not discard it during upgrades.

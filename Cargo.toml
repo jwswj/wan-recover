@@ -1,0 +1,31 @@
+[package]
+name = "wan-recover"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.93"
+license = "MIT"
+description = "Local UniFi WAN monitoring and Meross modem recovery"
+readme = "README.md"
+
+[dependencies]
+anyhow = "1"
+axum = "0.8"
+fs2 = "0.4"
+md5 = "0.8"
+reqwest = { version = "0.12", default-features = false, features = ["json", "rustls-tls"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+subtle = "2"
+tokio = { version = "1", features = ["macros", "rt-multi-thread", "signal", "time", "net", "sync", "process", "io-util"] }
+toml = "0.8"
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter", "json"] }
+uuid = { version = "1", features = ["v4"] }
+
+[dev-dependencies]
+tempfile = "3"
+tower = { version = "0.5", features = ["util"] }
+
+[profile.release]
+lto = "thin"
+strip = true

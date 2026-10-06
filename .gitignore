@@ -1,0 +1,10 @@
+/target/
+/config.toml
+/data/
+/secrets/
+/deploy/kubernetes/config.toml
+.env
+.DS_Store
+*.pem
+*.key
+__pycache__/
